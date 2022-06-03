@@ -3,13 +3,14 @@ public class Main{
     public static void main(String[] args)throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
+        
         String star = "*";
         String space = " ";
         
         for(int i=0;i<N;i++) {
-        	System.out.print(space.repeat(i));
-        	System.out.print(star.repeat(N-i));
-        	System.out.println("");
+            sb.append(space.repeat(i)).append(star.repeat(N-i)).append("\n");
         }
+        System.out.print(sb);
     }
 }
