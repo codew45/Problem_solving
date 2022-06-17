@@ -13,8 +13,10 @@ class Main {
 			cnt[str.charAt(i)-'a']++;
 		}
 		
+		StringBuilder sb = new StringBuilder();
 		for(int val : cnt) {
-			System.out.print(val+" ");
+			sb.append(val).append(' ');
 		}
+		System.out.print(sb);
 	}
 }
