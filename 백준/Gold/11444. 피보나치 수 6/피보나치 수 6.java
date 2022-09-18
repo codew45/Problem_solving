@@ -4,22 +4,21 @@ public class Main {
 	final static long MOD = 1000000007;
 	static long[][] fibo = {{1,1},{1,0}};
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		long N = Long.parseLong(br.readLine());
 		
-		System.out.println(findFibo(fibo, N-1)[0][0]);
+		System.out.println(findFibo( N-1)[0][0]);
 	}
 	
-	static long[][] findFibo(long[][] arr, long n) {
+	static long[][] findFibo(long n) {
 		
 		if(n<2) {
-			return arr;
+			return fibo;
 		}
 		
-		long[][] tmp = findFibo(arr,n/2);
+		long[][] tmp = findFibo(n/2);
 		
 		tmp = multiply(tmp, tmp);
 		
