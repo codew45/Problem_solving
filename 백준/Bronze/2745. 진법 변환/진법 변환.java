@@ -16,14 +16,10 @@ public class Main {
 		for(int i=0;i<rev.length();i++) {
 			char c = rev.charAt(i);
 			if(c>='0'&&c<='9') {
-				double tmp = ((int)(c-'0'))*Math.pow(B, i);
-				
-				result += tmp;
+				result += ((int)(c-'0'))*Math.pow(B, i);
 			}
 			else {
-				double tmp = ((int)(c-'A'+10))*Math.pow(B, i);
-				
-				result += tmp;
+				result += ((int)(c-'A'+10))*Math.pow(B, i);
 				}
 		}
 		System.out.println(result);
