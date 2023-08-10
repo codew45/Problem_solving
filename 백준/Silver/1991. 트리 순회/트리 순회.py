@@ -1,32 +1,23 @@
 import sys
 input = sys.stdin.readline
 
-class Node:
-    def __init__(self, data, left, right):
-        self.data=data
-        self.left=left
-        self.right=right
+def pre_order(root):
+    if root!=None:
+        print(root,end='')
+        pre_order(tree[root][0])
+        pre_order(tree[root][1])
 
-def pre_order(node):
-    print(node.data, end='')
-    if node.left!=None:
-        pre_order(tree[node.left])
-    if node.right!=None:
-        pre_order(tree[node.right])
+def in_order(root):
+    if root!=None:
+        in_order(tree[root][0])
+        print(root,end='')
+        in_order(tree[root][1])
 
-def in_order(node):
-    if node.left!=None:
-        in_order(tree[node.left])
-    print(node.data,end='')
-    if node.right!=None:
-        in_order(tree[node.right])
-
-def post_order(node):
-    if node.left!=None:
-        post_order(tree[node.left])
-    if node.right!=None:
-        post_order(tree[node.right])
-    print(node.data,end='')
+def post_order(root):
+    if root!=None:
+        post_order(tree[root][0])
+        post_order(tree[root][1])
+        print(root,end='')
 
 n = int(input())
 tree = {}
@@ -37,10 +28,11 @@ for i in range(n):
         left=None
     if right=='.':
         right=None
-    tree[data] = Node(data,left,right)
-pre_order(tree['A'])
+    tree[data] = [left,right]
+
+pre_order('A')
 print()
-in_order(tree['A'])
+in_order('A')
 print()
-post_order(tree['A'])
+post_order('A')
         
