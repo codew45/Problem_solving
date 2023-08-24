@@ -20,6 +20,7 @@ def bfs(a,b,d):
     
     while queue:
         x,y = queue.popleft()
+        visited[x][y] = True
         flag = 0
 
         for _ in range(4):
@@ -32,7 +33,6 @@ def bfs(a,b,d):
                     cnt +=1
                     flag = 1
                     queue.append((nx,ny))
-                    visited[nx][ny] = True
                     break
 
         if flag ==0:
@@ -42,7 +42,7 @@ def bfs(a,b,d):
                 nx = x-dx[d]
                 ny = y-dy[d]
                 queue.append((nx,ny))
-                visited[nx][ny] = True
+                #visited[nx][ny] = True
     return cnt
 
 print(bfs(r,c,d))
