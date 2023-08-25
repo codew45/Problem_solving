@@ -17,10 +17,10 @@ def bfs(s,g):
             visited[a+u][0] = 1
             visited[a+u][1] = visited[a][1]+1
         if a-d>0 and visited[a-d][0]==0:
-                queue.append(a-d)
-                visited[a-d][0] = 1
-                visited[a-d][1] = visited[a][1]+1
-    if visited[g][1] ==0:
-        print("use the stairs")
-        return
+            queue.append(a-d)
+            visited[a-d][0] = 1
+            visited[a-d][1] = visited[a][1]+1
+
+    print("use the stairs")
+    return
 bfs(s,g)
