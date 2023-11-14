@@ -25,12 +25,16 @@ def watch(x,y):
 def dfs(cnt):
     global answer
     if cnt == 3:
-        count = 0
+        teacher_cnt = 0
         for x,y in teachers:
             if not watch(x,y):
-                count +=1
-        if count==len(teachers):
+                teacher_cnt +=1
+            else:
+                break
+        if teacher_cnt==len(teachers):
             answer = True
+            return
+                
         return
     
     for i in range(n):
