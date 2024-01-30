@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 
@@ -15,15 +14,14 @@ public class Main {
 				sb.append(n).append(" ");
 			}
 			sb.append("\n");
+            return;
 		}
-		else {
-			for(int i=1;i<=N;i++) {
-				if(!isSelected[i]) {
-					numbers[cnt] = i;
-					isSelected[i]=true;
-					perm(cnt+1);
-					isSelected[i] = false;
-				}
+		for(int i=1;i<=N;i++) {
+			if(!isSelected[i]) {
+				numbers[cnt] = i;
+				isSelected[i]=true;
+				perm(cnt+1);
+				isSelected[i] = false;
 			}
 		}
 	}
