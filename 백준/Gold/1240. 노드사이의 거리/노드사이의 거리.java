@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Main{
+public class Main {
 	static List<ArrayList<Node>> tree = new ArrayList<>();
 	static int N;
 	static int answer;
@@ -43,8 +43,9 @@ public class Main{
 		}
 		v[start] = true;
 		for(int i=0;i<tree.get(start).size();i++) {
-			if(!v[tree.get(start).get(i).to]) {
-				dfs(tree.get(start).get(i).to,target,cost+tree.get(start).get(i).dist);
+			Node node = tree.get(start).get(i);
+			if(!v[node.to]) {
+				dfs(node.to,target,cost+node.dist);
 			}
 		}
 		
