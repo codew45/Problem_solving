@@ -1,18 +1,6 @@
 import java.awt.Point;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Queue;
-import java.util.StringTokenizer;
-/**
- * I의 위치에서 x가 아니면
- * BFS 돌면서 P를 만나면 cnt++
- * cnt가 0이면 TT 
- * @author vnfms
- *
- */
+import java.io.*;
+import java.util.*;
 public class Main {
 
 	static int[] dx = {-1,1,0,0};
@@ -69,7 +57,9 @@ public class Main {
 		}
 		
 		bfs(new Point(startX,startY));
-		System.out.println((cnt>0)?cnt:"TT");
+//		System.out.println((cnt>0)?cnt:"TT");
+		if(cnt==0) System.out.println("TT");
+		else System.out.println(cnt);
 		
 	}
 
