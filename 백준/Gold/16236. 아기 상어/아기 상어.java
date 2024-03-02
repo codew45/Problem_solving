@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.io.*;
 import java.util.*;
+
 public class Main {
 	static int N;
 	static int[][] map;
@@ -18,12 +19,14 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
 		map = new int[N][N];
+		
 		for(int i=0;i<N;i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			for(int j=0;j<N;j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 				if(map[i][j]==9) {
 					shark = new Fish(i,j, 0);
+					map[i][j] = 0;
 				}
 			}
 		}
@@ -38,7 +41,6 @@ public class Main {
 		}
 	}
 	
-	
 	static void findFish() {
 		fishes = new PriorityQueue<>();
 		visited = new boolean[N][N];
@@ -51,33 +53,24 @@ public class Main {
 			int x = cur.x;
 			int y = cur.y;
 			int dist = cur.dist;
-			if(map[x][y]>0&&map[x][y]<size&&!visited[x][y]) {
-				fishes.add(new Fish(x,y,dist));
-			}
-			
+//			if(map[x][y]>0&&map[x][y]<size&&!visited[x][y]) {
+//				fishes.add(new Fish(x,y,dist));
+//				visited[x][y] = true;
+//			}
+//			
 			for(int i=0;i<4;i++) {
 				int nx = x+dx[i];
 				int ny = y+dy[i];
-				if(nx>=0&&nx<N&&ny>=0&&ny<N&&!visited[nx][ny]) {
-					if(map[nx][ny]<=size) {
-						q.offer(new Fish(nx,ny, dist+1));
-						visited[nx][ny] = true;
-						if(map[nx][ny]>0 && map[nx][ny]<size) {
-							fishes.offer(new Fish(nx,ny,dist+1));
-						}
+				if(nx>=0&&nx<N&&ny>=0&&ny<N&&!visited[nx][ny]&&map[nx][ny]<=size) {
+					q.offer(new Fish(nx,ny, dist+1));
+					visited[nx][ny] = true;
+					if(map[nx][ny]>0 && map[nx][ny]<size) {
+						fishes.offer(new Fish(nx,ny,dist+1));
 					}
 				}
 			}
 		}
 		
-	}
-	static void print() {
-		for(int i=0;i<N;i++) {
-			for(int j=0;j<N;j++) {
-				System.out.print(map[i][j]+" ");
-			}
-			System.out.println();
-		}
 	}
 	
 	static void eatFish() {
@@ -91,10 +84,7 @@ public class Main {
 		map[shark.x][shark.y] = 0; 
 		shark.x = nowFish.x;
 		shark.y = nowFish.y;
-		visited[nowFish.x][nowFish.y] = true;
 		map[shark.x][shark.y] = 9; 
-		
-		
 	}
 
 	
