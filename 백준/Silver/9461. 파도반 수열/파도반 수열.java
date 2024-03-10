@@ -10,12 +10,12 @@ public class Main {
 		dp[1] = dp[2] = dp[3] = 1;
 		dp[4] = dp[5] = 2;
 		
+		for(int j=6;j<=100;j++) {
+			dp[j] = dp[j-5]+dp[j-1];
+		}
+		
 		for(int i=0;i<t;i++) {
 			int n = Integer.parseInt(br.readLine());
-			
-			for(int j=6;j<=n;j++) {
-				dp[j] = dp[j-5]+dp[j-1];
-			}
 			System.out.println(dp[n]);
 		}
 	}
