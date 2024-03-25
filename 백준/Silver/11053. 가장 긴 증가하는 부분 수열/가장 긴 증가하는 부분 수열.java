@@ -1,12 +1,10 @@
 import java.io.*;
 import java.util.*;
-
 public class Main {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(br.readLine());
-
 		int[] input = new int[n];
 		int[] dp = new int[n];
 		
@@ -16,25 +14,39 @@ public class Main {
 			input[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		dp[0] = 1;
+		ArrayList<Integer> lst = new ArrayList<Integer>();
+		dp[0] = 0;
+		lst.add(input[0]);
+		
+		int max = 0;
 		
 		for(int i=1;i<n;i++) {
-			dp[i] = 1;
-			for(int j=0;j<i;j++) {
-				// j번쨰 수보다 i번째 수가 크고 
-				// j번쨰까지의 최장 증가 수열에 i번째수를 포함한 게 더 길다면
-				// i번째까지 포함시킨다
-				if(input[i]>input[j]&&dp[i]<=dp[j]+1) {
-					dp[i] = dp[j]+1;
+			for(int j=0;j<lst.size();j++) {
+				if(input[i]<=lst.get(j)) {
+					dp[i] = j;
+					lst.set(j, input[i]);
+					break;
+				}
+				if(j==lst.size()-1) {
+//					System.out.println(lst.get(lst.size()-1)+" "+input[i]+" "+j);
+					dp[i] = j+1;
+					lst.add(input[i]);
+					break;
 				}
 			}
 		}
 		
-		int maxLen = 0;
-		for(int i:dp) {
-			maxLen = Math.max(maxLen, i);
+		for(int i=0;i<n;i++) {
+			max = Math.max(max, dp[i]);
 		}
-		System.out.println(maxLen);
+		System.out.println(max+1);
+//		System.out.println(Arrays.toString(lst.toArray()));
+//		System.out.println(Arrays.toString(dp));
+//		for(int i:lst) {
+//			System.out.print(i+" ");
+//		}
+		
+
 	}
 
 }
