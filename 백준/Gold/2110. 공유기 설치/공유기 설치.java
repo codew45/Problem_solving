@@ -18,8 +18,7 @@ public class Main {
     
     int start = 1;
     int end = positions[N-1]-positions[0];
-    int minDist = 0;
-    
+    int maxDist = 0;
     
     while(start<=end){
         int mid = (start+end)/2;
@@ -35,13 +34,13 @@ public class Main {
         }
         
         if(installedCnt>=C){
-            minDist = mid;
+            maxDist = mid;
             start = mid+1;
         }else{
             end = mid-1;
         }
     }
-    System.out.println(minDist);
+    System.out.println(maxDist);
     
   }
 }
