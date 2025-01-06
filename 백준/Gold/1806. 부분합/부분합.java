@@ -18,20 +18,19 @@ public class Main {
     
     int start = 0;
     int end = 0;
-    int sum = numbers[0];
+    int sum = 0;
     
     int minLength = Integer.MAX_VALUE;
     
     while(end<N){
-        if(sum >= S){
+        sum += numbers[end];
+        
+        while(sum >= S){
             minLength = Math.min(minLength, end-start+1);
             sum -= numbers[start];
             start++;
-        }else{
-            if(end==N-1) break;
-            end++;
-            sum += numbers[end];
         }
+        end++;
     }
     
     System.out.println(minLength == Integer.MAX_VALUE ? 0 : minLength);
