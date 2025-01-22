@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     static int N;
     static int[][] map;
-    static long max;
+    static int max;
     static int[][][] dir = {
             {
                 {0, 0}, {-1, 0}, {-2, 0}, {-3, 0}
