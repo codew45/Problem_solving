@@ -18,6 +18,7 @@ class Solution {
         q.add(start);
         visited[start.x][start.y] = true;
         idx[start.x][start.y] = landIdx;
+        int newSeokYou = 0;
         
         while(!q.isEmpty()){
             Point cur = q.poll();
@@ -34,10 +35,12 @@ class Solution {
                     q.add(new Point(nx, ny));
                     visited[nx][ny] = true;
                     idx[nx][ny] = landIdx;
-                    sizes.set(landIdx, sizes.get(landIdx)+1);
+                    
+                    newSeokYou++;
                 }
             }
         }
+        sizes.set(landIdx, sizes.get(landIdx)+newSeokYou);
         
     }
     
